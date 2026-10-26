@@ -18,9 +18,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Text("Hello world")
+            MessageCard("Android")
 
         }
     }
 }
+@Composable
+fun MessageCard(name: String) {
+    Text(text = "Hello $name")
+
+}
+
 

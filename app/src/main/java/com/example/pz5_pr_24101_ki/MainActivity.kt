@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Pz5pr24101kiTheme {
                 Surface (modifier = Modifier.fillMaxSize()){
-                    MessageCard(msg = Message("Kotlin", "JetPack Compose"))
+                    MessageCard(msg = Message("Lexi", "Take look at JetPack Compose"))
                 }
             }
         }
@@ -63,10 +63,14 @@ fun MessageCard(msg: Message) {
                 style = MaterialTheme.typography.titleSmall
             )
             Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = msg.body,
-                style = MaterialTheme.typography.bodyMedium
-            )
+
+            Surface(shape = MaterialTheme.shapes.medium, shadowElevation = 1.dp,) {
+                Text(
+                    text = msg.body,
+                    modifier = Modifier.padding(all = 4.dp),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
 
         }
     }

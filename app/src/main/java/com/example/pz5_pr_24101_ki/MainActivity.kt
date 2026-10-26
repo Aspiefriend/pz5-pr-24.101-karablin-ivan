@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Surface
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -30,8 +31,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MessageCard(msg = Message("Kotlin", "JetPack Compose"))
-
+            Pz5pr24101kiTheme {
+                Surface (modifier = Modifier.fillMaxSize()){
+                    MessageCard(msg = Message("Kotlin", "JetPack Compose"))
+                }
+            }
         }
     }
 }
@@ -58,7 +62,11 @@ fun MessageCard(msg: Message) {
 @Preview
 @Composable
 fun PreviewMessageCard(){
-    MessageCard(msg = Message("Kotlin", "JetPack Compose"))
+    Pz5pr24101kiTheme {
+        Surface(modifier = Modifier.fillMaxSize()) {
+            MessageCard(msg = Message("Kotlin", "JetPack Compose"))
+        }
+    }
 }
 
 data class Message(val author : String, val body: String)

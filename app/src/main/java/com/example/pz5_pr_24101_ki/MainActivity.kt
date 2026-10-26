@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pz5_pr_24101_ki.ui.theme.Pz5pr24101kiTheme
+import androidx.compose.foundation.layout.Column
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +26,10 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun MessageCard(msg: Message) {
-    Text(text = msg.author)
-    Text(text = msg.body)
-
+    Column {
+        Text(text = msg.author)
+        Text(text = msg.body)
+    }
 }
 @Preview
 @Composable

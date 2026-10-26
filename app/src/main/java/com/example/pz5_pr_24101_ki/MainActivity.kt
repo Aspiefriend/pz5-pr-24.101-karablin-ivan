@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -13,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pz5_pr_24101_ki.ui.theme.Pz5pr24101kiTheme
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.ui.res.painterResource
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +29,16 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun MessageCard(msg: Message) {
-    Column {
-        Text(text = msg.author)
-        Text(text = msg.body)
+    Row {
+        Image(
+            painter = painterResource(R.drawable.profile_picture),
+            contentDescription = "Contact profile picture"
+
+        )
+        Column {
+            Text(text = msg.author)
+            Text(text = msg.body)
+        }
     }
 }
 @Preview

@@ -1,5 +1,6 @@
 package com.example.pz5_pr_24101_ki
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Pz5pr24101kiTheme {
                 Surface (modifier = Modifier.fillMaxSize()){
-                    MessageCard(msg = Message("Lexi", "Take look at JetPack Compose"))
+                    MessageCard(msg = Message("Android", "JetPack Compose"))
                 }
             }
         }
@@ -75,12 +76,17 @@ fun MessageCard(msg: Message) {
         }
     }
 }
-@Preview
+@Preview(name = "Light Mode")
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    name = "Dark Mode"
+)
 @Composable
 fun PreviewMessageCard(){
     Pz5pr24101kiTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
-            MessageCard(msg = Message("Kotlin", "JetPack Compose"))
+            MessageCard(msg = Message("Lexi", "Take a look at JetPack Compose"))
         }
     }
 }

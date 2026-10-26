@@ -15,7 +15,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.pz5_pr_24101_ki.ui.theme.Pz5pr24101kiTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,14 +37,20 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun MessageCard(msg: Message) {
-    Row {
+    Row(modifier = Modifier.padding(all = 8.dp)) {
         Image(
             painter = painterResource(R.drawable.profile_picture),
-            contentDescription = "Contact profile picture"
+            contentDescription = "Contact profile picture",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
 
         )
+        Spacer(modifier = Modifier.width(8.dp))
         Column {
             Text(text = msg.author)
+            Spacer(modifier = Modifier.height(4.dp))
             Text(text = msg.body)
         }
     }

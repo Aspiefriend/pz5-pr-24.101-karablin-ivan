@@ -21,6 +21,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -37,11 +39,23 @@ class MainActivity : ComponentActivity() {
         setContent {
             Pz5pr24101kiTheme {
                 Surface (modifier = Modifier.fillMaxSize()){
-                    MessageCard(msg = Message("Android", "JetPack Compose"))
+                    Conversation(SampleData)
                 }
             }
         }
     }
+}
+
+
+@Composable
+fun Conversation(messages: List<Message>){
+    LazyColumn {
+        items(messages) {
+                message ->
+            MessageCard(message)
+        }
+    }
+
 }
 @Composable
 fun MessageCard(msg: Message) {
@@ -86,11 +100,19 @@ fun MessageCard(msg: Message) {
 fun PreviewMessageCard(){
     Pz5pr24101kiTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
-            MessageCard(msg = Message("Lexi", "Take a look at JetPack Compose"))
+            Conversation(SampleData)
         }
     }
 }
 
+
 data class Message(val author : String, val body: String)
+
+val SampleData = listOf(
+    Message("Kotlin", "Привет! Это первое сообщение в списке."),
+    Message("Android", "Добро пожаловать в Jetpack Compose."),
+    Message("Тренер", "Не забудь про тренировку сегодня!"),
+    Message("FitPro", "Твоя статистика улучшилась на 10%.")
+)
 
 
